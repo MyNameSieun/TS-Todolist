@@ -18,10 +18,22 @@ export const useTodos = () => {
   };
 
   // 토글
+  const toggleTodoDone = (id: string) => {
+    const toggleTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
+    );
+    setTodos(toggleTodos);
+  };
+
+  const filterIsNotDone = todos.filter((todo) => todo.isDone === false);
+  const filterIsDone = todos.filter((todo) => todo.isDone === true);
 
   return {
     todos,
     addTodo,
     deleteTodo,
+    toggleTodoDone,
+    filterIsNotDone,
+    filterIsDone,
   };
 };

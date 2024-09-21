@@ -5,12 +5,24 @@ import TodoList from "./components/todo/TodoList";
 import { useTodos } from "./hooks/useTodos";
 
 const App: React.FC = () => {
-  const { todos, addTodo, deleteTodo } = useTodos();
+  const { addTodo, deleteTodo, toggleTodoDone, filterIsDone, filterIsNotDone } =
+    useTodos();
 
   return (
     <div>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} deleteTodo={deleteTodo} />
+      <TodoList
+        todoTitle="In Progress"
+        todos={filterIsNotDone}
+        deleteTodo={deleteTodo}
+        toggleTodoDone={toggleTodoDone}
+      />
+      <TodoList
+        todoTitle="Done"
+        todos={filterIsDone}
+        deleteTodo={deleteTodo}
+        toggleTodoDone={toggleTodoDone}
+      />
     </div>
   );
 };
