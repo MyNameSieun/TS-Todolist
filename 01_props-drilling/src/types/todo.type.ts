@@ -7,3 +7,11 @@ export interface Todo {
   isDone: boolean;
   deadline: string;
 }
+
+export interface DoneTodo extends Todo {
+  isDone: true;
+}
+
+export interface InProgressTodo extends Todo {
+  isDone: false;
+}

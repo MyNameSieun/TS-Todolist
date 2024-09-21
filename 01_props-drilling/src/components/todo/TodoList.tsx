@@ -5,14 +5,15 @@ import TodoItem from "./TodoItem";
 
 interface TodoListProps {
   todos: Todo[];
-  deleteTodo: (id: string) => void;
   todoTitle: string;
+
+  deleteTodo: (id: string) => void;
   toggleTodoDone: (id: string) => void;
 }
 
 const TodoList = ({
-  todoTitle,
   todos,
+  todoTitle,
   deleteTodo,
   toggleTodoDone,
 }: TodoListProps) => {

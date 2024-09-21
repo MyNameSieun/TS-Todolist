@@ -1,7 +1,7 @@
 // src/hooks/useTodos.tsx
 
 import { useState } from "react";
-import { Todo } from "../types/todo.type";
+import { DoneTodo, InProgressTodo, Todo } from "../types/todo.type";
 
 export const useTodos = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -25,15 +25,19 @@ export const useTodos = () => {
     setTodos(toggleTodos);
   };
 
-  const filterIsNotDone = todos.filter((todo) => todo.isDone === false);
-  const filterIsDone = todos.filter((todo) => todo.isDone === true);
+  // Todo 필터링
+  const inProgressTodos = todos.filter(
+    (todo) => !todo.isDone
+  ) as InProgressTodo[];
+
+  const doneTodos = todos.filter((todo) => todo.isDone) as DoneTodo[];
 
   return {
     todos,
     addTodo,
     deleteTodo,
     toggleTodoDone,
-    filterIsNotDone,
-    filterIsDone,
+    inProgressTodos,
+    doneTodos,
   };
 };

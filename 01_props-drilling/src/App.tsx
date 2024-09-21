@@ -5,7 +5,7 @@ import TodoList from "./components/todo/TodoList";
 import { useTodos } from "./hooks/useTodos";
 
 const App: React.FC = () => {
-  const { addTodo, deleteTodo, toggleTodoDone, filterIsDone, filterIsNotDone } =
+  const { addTodo, deleteTodo, toggleTodoDone, inProgressTodos, doneTodos } =
     useTodos();
 
   return (
@@ -13,13 +13,13 @@ const App: React.FC = () => {
       <TodoForm addTodo={addTodo} />
       <TodoList
         todoTitle="In Progress"
-        todos={filterIsNotDone}
+        todos={inProgressTodos}
         deleteTodo={deleteTodo}
         toggleTodoDone={toggleTodoDone}
       />
       <TodoList
         todoTitle="Done"
-        todos={filterIsDone}
+        todos={doneTodos}
         deleteTodo={deleteTodo}
         toggleTodoDone={toggleTodoDone}
       />
