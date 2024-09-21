@@ -13,27 +13,6 @@
       "content": "재밌어요?",
       "isDone": true,
       "deadline": "2023-09-22"
-    },
-    {
-      "id": "48efd88c-05d9-4726-a3d7-1a5664c251d6",
-      "title": "4",
-      "content": "4",
-      "isDone": true,
-      "deadline": "2024. 9. 21."
-    },
-    {
-      "id": "d3bf7514-d78e-4054-b744-674d9cddfb14",
-      "title": "0",
-      "content": "[",
-      "isDone": false,
-      "deadline": "2024. 9. 21."
-    },
-    {
-      "id": "02644c2e-a6d9-4348-87b5-13441a2b9989",
-      "title": "87",
-      "content": "789",
-      "isDone": false,
-      "deadline": "2024. 9. 21."
     }
   ]
 }

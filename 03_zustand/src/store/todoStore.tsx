@@ -11,7 +11,7 @@ interface TodoState {
   loading: boolean;
   fetchTodos: () => Promise<void>;
   addTodo: (todo: Todo) => Promise<void>;
-  //   deleteTodo: (id: number) => Promise<void>;
+  deleteTodo: (id: string) => Promise<void>;
   //   editTodo: (id: number, updatedData: Partial<Todo>) => Promise<void>;
   //   toggleTodo: (id: number) => Promise<void>;
 }
@@ -38,6 +38,16 @@ export const useTodoStore = create<TodoState>((set) => ({
     try {
       const response = await todoAxios.post(`/todos`, todo);
       set((state) => ({ todos: [...state.todos, response.data] }));
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  // todos 삭제
+  deleteTodo: async (id: string) => {
+    try {
+      await todoAxios.delete(`/todos/${id}`);
+      set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) }));
     } catch (error) {
       console.error(error);
     }

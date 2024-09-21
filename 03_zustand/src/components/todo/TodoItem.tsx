@@ -1,3 +1,4 @@
+import { useTodoStore } from "../../store/todoStore";
 import { Todo } from "../../types/todo.type";
 
 interface TodoItemProps {
@@ -5,10 +6,14 @@ interface TodoItemProps {
 }
 
 const TodoItem = ({ todo }: TodoItemProps) => {
-  const { title, content, deadline } = todo;
+  const { id, title, content, deadline, isDone } = todo;
+  const { deleteTodo } = useTodoStore();
 
   // 삭제
-  const handleDeleteButton = () => {};
+  const handleDeleteButton = () => {
+    deleteTodo(id);
+    alert("삭제가 완료되었습니다.");
+  };
 
   return (
     <li>
