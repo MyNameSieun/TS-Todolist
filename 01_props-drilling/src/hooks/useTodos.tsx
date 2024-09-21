@@ -17,6 +17,17 @@ export const useTodos = () => {
     setTodos(updatedTodos);
   };
 
+  // 수정
+  const patchTodo = (
+    id: string,
+    updateTodo: Pick<Todo, "title" | "content">
+  ) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, ...updateTodo } : todo
+    );
+    setTodos(updatedTodos);
+  };
+
   // 토글
   const toggleTodoDone = (id: string) => {
     const toggleTodos = todos.map((todo) =>
@@ -36,6 +47,7 @@ export const useTodos = () => {
     todos,
     addTodo,
     deleteTodo,
+    patchTodo,
     toggleTodoDone,
     inProgressTodos,
     doneTodos,

@@ -7,6 +7,7 @@ interface TodoListProps {
   todos: Todo[];
   todoTitle: string;
   deleteTodo: (id: string) => void;
+  patchTodo: (id: string, updateTodo: Pick<Todo, "title" | "content">) => void;
   toggleTodoDone: (id: string) => void;
 }
 
@@ -14,6 +15,7 @@ const TodoList = ({
   todos,
   todoTitle,
   deleteTodo,
+  patchTodo,
   toggleTodoDone,
 }: TodoListProps) => {
   return (
@@ -26,6 +28,7 @@ const TodoList = ({
             key={todo.id}
             todo={todo}
             deleteTodo={deleteTodo}
+            patchTodo={patchTodo}
             toggleTodoDone={toggleTodoDone}
           />
         ))}
