@@ -6,6 +6,7 @@ import {
   updateTodo,
 } from "../../api/todos";
 import { Todo } from "../../types/todo.type";
+import { StTodoCardItem } from "../../style/TodoStyle";
 
 interface TodoItemProps {
   todo: Todo;
@@ -14,9 +15,10 @@ interface TodoItemProps {
 
 const TodoItem = ({ todo, setTodos }: TodoItemProps) => {
   const [editTodo, setEditTodo] = useState<Todo | null>(null);
+  const { id, title, content, deadline, isDone } = todo;
 
   // 삭제
-  const handleDeleteButton = async (id: string) => {
+  const handleDeleteButton = async () => {
     const deleteConfirm = window.confirm("정말 삭제하시겠습니까?");
 
     if (deleteConfirm) {
@@ -55,40 +57,37 @@ const TodoItem = ({ todo, setTodos }: TodoItemProps) => {
     }
   };
   return (
-    <div>
-      <li key={todo.id}>
-        {editTodo && editTodo.id === todo.id ? (
-          <>
-            <input
-              value={editTodo.title}
-              onChange={(e) =>
-                setEditTodo({ ...editTodo, title: e.target.value })
-              }
-            />
-            <input
-              value={editTodo.content}
-              onChange={(e) =>
-                setEditTodo({ ...editTodo, content: e.target.value })
-              }
-            />
-            <button onClick={() => setEditTodo(null)}>수정 취소</button>
-            <button onClick={handleEditButton}>수정 완료</button>
-          </>
-        ) : (
-          <>
-            <h2>{todo.title}</h2>
-            <p>{todo.content}</p>
-            <button onClick={() => handleDeleteButton(todo.id)}>삭제</button>
-            <button onClick={() => setEditTodo(todo)}>수정</button>
-            <button
-              onClick={() => handleDoneToggleButton(todo.id, todo.isDone)}
-            >
-              {todo.isDone ? "할 일 취소" : "할 일 완료"}
-            </button>
-          </>
-        )}
-      </li>
-    </div>
+    <StTodoCardItem $isDone={isDone}>
+      {editTodo && editTodo.id === todo.id ? (
+        <>
+          <input
+            value={editTodo.title}
+            onChange={(e) =>
+              setEditTodo({ ...editTodo, title: e.target.value })
+            }
+          />
+          <input
+            value={editTodo.content}
+            onChange={(e) =>
+              setEditTodo({ ...editTodo, content: e.target.value })
+            }
+          />
+          <button onClick={() => setEditTodo(null)}>수정 취소</button>
+          <button onClick={handleEditButton}>수정 완료</button>
+        </>
+      ) : (
+        <>
+          <h2>{title}</h2>
+          <p>{content}</p>
+          <p>{deadline}</p>
+          <button onClick={handleDeleteButton}>삭제</button>
+          <button onClick={() => setEditTodo(todo)}>수정</button>
+          <button onClick={() => handleDoneToggleButton(todo.id, todo.isDone)}>
+            {todo.isDone ? "할 일 취소" : "할 일 완료"}
+          </button>
+        </>
+      )}
+    </StTodoCardItem>
   );
 };
 
