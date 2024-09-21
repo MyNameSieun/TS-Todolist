@@ -36,3 +36,10 @@ export const deleteTodo = async (id: string) => {
 // 수정
 
 // 토글
+export const toggleDoneTodo = async (id: string, isDone: boolean) => {
+  try {
+    return await todosAxios.patch(`/todos/${id}`, { isDone: !isDone });
+  } catch (error) {
+    console.error(error);
+  }
+};

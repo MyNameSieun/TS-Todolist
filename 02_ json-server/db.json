@@ -11,7 +11,7 @@
       "id": "2",
       "title": "타입스크립트는",
       "content": "재밌어요?",
-      "isDone": false,
+      "isDone": true,
       "deadline": "2023-09-22"
     }
   ]
