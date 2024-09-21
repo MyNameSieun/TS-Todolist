@@ -22,13 +22,12 @@ const TodoList = ({
 
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
-            <TodoItem
-              todo={todo}
-              deleteTodo={deleteTodo}
-              toggleTodoDone={toggleTodoDone}
-            />
-          </li>
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            deleteTodo={deleteTodo}
+            toggleTodoDone={toggleTodoDone}
+          />
         ))}
       </ul>
     </section>

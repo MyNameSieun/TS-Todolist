@@ -1,5 +1,6 @@
 // src/components/todo/TodoItem.tsx
 
+import { StTodoCardItem } from "../../style/TodoStyle";
 import { Todo } from "../../types/todo.type";
 
 interface TodoItemProps {
@@ -23,15 +24,17 @@ const TodoItem = ({ todo, deleteTodo, toggleTodoDone }: TodoItemProps) => {
   };
 
   return (
-    <article>
-      <p>제목: {content}</p>
-      <p>내용: {title}</p>
-      <p>등록일: {deadline}</p>
-      <button onClick={handleDelete}>삭제</button>
-      <button onClick={handleDoneTodo}>
-        {isDone ? "할 일 완료" : "할 일 취소"}
-      </button>
-    </article>
+    <StTodoCardItem $isDone={isDone}>
+      <article>
+        <p>제목: {content}</p>
+        <p>내용: {title}</p>
+        <p>등록일: {deadline}</p>
+        <button onClick={handleDelete}>삭제</button>
+        <button onClick={handleDoneTodo}>
+          {isDone ? "할 일 완료" : "할 일 취소"}
+        </button>
+      </article>
+    </StTodoCardItem>
   );
 };
 
