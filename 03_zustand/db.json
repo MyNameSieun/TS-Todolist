@@ -1,18 +1,18 @@
 {
   "todos": [
     {
-      "id": "1",
-      "title": "오늘 날씨는",
-      "content": "너무 더워요ㅜㄴ",
-      "isDone": false,
-      "deadline": "2023-09-21"
-    },
-    {
       "id": "2",
       "title": "타입스크립트는",
       "content": "재밌어요?",
       "isDone": true,
       "deadline": "2023-09-22"
+    },
+    {
+      "id": "269fae28-920e-475a-9ffa-bbedd07d7999",
+      "title": "ㅅ교",
+      "content": "ㅅ교",
+      "isDone": true,
+      "deadline": "2024. 9. 21."
     }
   ]
 }

@@ -13,7 +13,7 @@ interface TodoState {
   addTodo: (todo: Todo) => Promise<void>;
   deleteTodo: (id: string) => Promise<void>;
   //   editTodo: (id: number, updatedData: Partial<Todo>) => Promise<void>;
-  //   toggleTodo: (id: number) => Promise<void>;
+  toggleDoneTodo: (id: string, isDone: boolean) => Promise<void>;
 }
 
 export const useTodoStore = create<TodoState>((set) => ({
@@ -48,6 +48,22 @@ export const useTodoStore = create<TodoState>((set) => ({
     try {
       await todoAxios.delete(`/todos/${id}`);
       set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) }));
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  // todos 토글
+  toggleDoneTodo: async (id: string, isDone: boolean) => {
+    try {
+      await todoAxios.patch(`/todos/${id}`, {
+        isDone: !isDone,
+      });
+      set((state) => ({
+        todos: state.todos.map((todo) =>
+          todo.id == id ? { ...todo, isDone: !isDone } : todo
+        ),
+      }));
     } catch (error) {
       console.error(error);
     }
