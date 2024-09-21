@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTodoStore } from "../../store/todoStore";
 import { Todo } from "../../types/todo.type";
+import { StTodoCardItem } from "../../style/TodoStyle";
 
 interface TodoItemProps {
   todo: Todo;
@@ -41,7 +42,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
   };
 
   return (
-    <li>
+    <StTodoCardItem $isDone={!isDone}>
       {editTodo ? (
         <>
           <input
@@ -73,7 +74,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
           </button>
         </>
       )}
-    </li>
+    </StTodoCardItem>
   );
 };
 
