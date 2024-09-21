@@ -26,8 +26,8 @@ const TodoItem = ({ todo, deleteTodo, toggleTodoDone }: TodoItemProps) => {
   return (
     <StTodoCardItem $isDone={isDone}>
       <article>
-        <p>제목: {content}</p>
-        <p>내용: {title}</p>
+        <p>제목: {title}</p>
+        <p>내용: {content}</p>
         <p>등록일: {deadline}</p>
         <button onClick={handleDelete}>삭제</button>
         <button onClick={handleDoneTodo}>
