@@ -34,7 +34,13 @@ export const deleteTodo = async (id: string) => {
 };
 
 // 수정
-
+export const updateTodo = async (id: string, todo: Todo) => {
+  try {
+    return await todosAxios.patch(`/todos/${id}`, todo);
+  } catch (error) {
+    console.error(error);
+  }
+};
 // 토글
 export const toggleDoneTodo = async (id: string, isDone: boolean) => {
   try {
