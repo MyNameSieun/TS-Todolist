@@ -26,10 +26,19 @@ const App: React.FC = () => {
     return <p>로딩중...</p>;
   }
 
+  // Todo 필터링
+  const inProgressTodos = todos.filter((todo) => todo.isDone === false);
+  const doneTodos = todos.filter((todo) => todo.isDone === true);
+
   return (
     <>
       <TodoForm setTodos={setTodos} />
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoList
+        todoTitle="In Progress"
+        todos={inProgressTodos}
+        setTodos={setTodos}
+      />
+      <TodoList todoTitle="Done" todos={doneTodos} setTodos={setTodos} />
     </>
   );
 };

@@ -2,11 +2,12 @@ import { deleteTodo, fetchTodo } from "../../api/todos";
 import { Todo } from "../../types/todo.type";
 
 interface TodoListProps {
+  todoTitle: string;
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-const TodoList = ({ todos, setTodos }: TodoListProps) => {
+const TodoList = ({ todoTitle, todos, setTodos }: TodoListProps) => {
   const handleDeleteButton = async (id: string) => {
     const deleteConfirm = window.confirm("정말 삭제하시겠습니까?");
 
@@ -20,15 +21,19 @@ const TodoList = ({ todos, setTodos }: TodoListProps) => {
   };
 
   return (
-    <ul>
-      {todos.map((todo) => (
-        <li key={todo.id}>
-          <h2>{todo.title}</h2>
-          <p>{todo.content}</p>
-          <button onClick={() => handleDeleteButton(todo.id)}>삭제</button>
-        </li>
-      ))}
-    </ul>
+    <>
+      <h1>{todoTitle}</h1>
+
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <h2>{todo.title}</h2>
+            <p>{todo.content}</p>
+            <button onClick={() => handleDeleteButton(todo.id)}>삭제</button>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
