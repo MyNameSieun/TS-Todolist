@@ -12,10 +12,16 @@ export const useTodos = () => {
   };
 
   // 삭제
+  const deleteTodo = (id: string) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
   // 토글
 
   return {
     todos,
     addTodo,
+    deleteTodo,
   };
 };

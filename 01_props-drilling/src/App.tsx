@@ -5,12 +5,12 @@ import TodoList from "./components/todo/TodoList";
 import { useTodos } from "./hooks/useTodos";
 
 const App: React.FC = () => {
-  const { todos, addTodo } = useTodos();
+  const { todos, addTodo, deleteTodo } = useTodos();
 
   return (
     <div>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} />
     </div>
   );
 };
