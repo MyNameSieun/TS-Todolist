@@ -25,6 +25,13 @@ export const createTodo = async (todo: Todo) => {
 };
 
 // 삭제
+export const deleteTodo = async (id: string) => {
+  try {
+    return await todosAxios.delete(`/todos/${id}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 // 수정
 
