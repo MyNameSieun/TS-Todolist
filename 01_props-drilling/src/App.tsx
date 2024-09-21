@@ -9,7 +9,7 @@ const App: React.FC = () => {
     useTodos();
 
   return (
-    <div>
+    <>
       <TodoForm addTodo={addTodo} />
       <TodoList
         todoTitle="In Progress"
@@ -23,7 +23,7 @@ const App: React.FC = () => {
         deleteTodo={deleteTodo}
         toggleTodoDone={toggleTodoDone}
       />
-    </div>
+    </>
   );
 };
 
