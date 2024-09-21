@@ -3,8 +3,8 @@
     {
       "id": "1",
       "title": "오늘 날씨는",
-      "content": "너무 더워요ㅜ",
-      "isDone": true,
+      "content": "너무 더워요ㅜㄴ",
+      "isDone": false,
       "deadline": "2023-09-21"
     },
     {
@@ -18,7 +18,7 @@
       "id": "48efd88c-05d9-4726-a3d7-1a5664c251d6",
       "title": "4",
       "content": "4",
-      "isDone": false,
+      "isDone": true,
       "deadline": "2024. 9. 21."
     }
   ]

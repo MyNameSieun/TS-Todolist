@@ -1,9 +1,10 @@
 import axios from "axios";
 import { Todo } from "../types/todo.type";
+const baseURL = import.meta.env.VITE_SERVER_URL;
 
 // process.env.REACT_APP_SERVER_URL 왜 오류나는지 체크하기
 const todosAxios = axios.create({
-  baseURL: `http://localhost:4000`,
+  baseURL,
 });
 
 // 읽기
