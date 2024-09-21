@@ -1,12 +1,24 @@
 // src/components/todo/TodoList.tsx
 
+import { Todo } from "../../types/todo.type";
 import TodoItem from "./TodoItem";
 
-const TodoList = () => {
+interface TodoListProps {
+  todos: Todo[];
+}
+
+const TodoList = ({ todos }: TodoListProps) => {
   return (
-    <div>
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo.id}>
+          <p>{todo.content}</p>
+          <p>{todo.title}</p>
+          <p>{todo.deadline}</p>
+        </li>
+      ))}
       <TodoItem />
-    </div>
+    </ul>
   );
 };
 

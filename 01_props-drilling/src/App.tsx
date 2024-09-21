@@ -2,12 +2,15 @@
 
 import TodoForm from "./components/todo/TodoForm";
 import TodoList from "./components/todo/TodoList";
+import { useTodos } from "./hooks/useTodos";
 
-const App = () => {
+const App: React.FC = () => {
+  const { todos, addTodo } = useTodos();
+
   return (
     <div>
-      <TodoForm />
-      <TodoList />
+      <TodoForm addTodo={addTodo} />
+      <TodoList todos={todos} />
     </div>
   );
 };
