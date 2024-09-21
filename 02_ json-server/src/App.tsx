@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import TodoForm from "./components/todo/TodoForm";
 import TodoList from "./components/todo/TodoList";
-import { Todo } from "./types/todo.type";
+import { DoneTodo, InProgressTodo, Todo } from "./types/todo.type";
 import { fetchTodo } from "./api/todos";
 
 const App: React.FC = () => {
@@ -27,8 +27,10 @@ const App: React.FC = () => {
   }
 
   // Todo 필터링
-  const inProgressTodos = todos.filter((todo) => todo.isDone === false);
-  const doneTodos = todos.filter((todo) => todo.isDone === true);
+  const inProgressTodos = todos.filter(
+    (todo) => !todo.isDone
+  ) as InProgressTodo[];
+  const doneTodos = todos.filter((todo) => todo.isDone) as DoneTodo[];
 
   return (
     <>
