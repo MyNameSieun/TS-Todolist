@@ -2,8 +2,8 @@
   "todos": [
     {
       "id": "2",
-      "title": "타입스크립트는",
-      "content": "재밌어요?",
+      "title": "타입스크립트는7",
+      "content": "재밌어요?0",
       "isDone": true,
       "deadline": "2023-09-22"
     },
@@ -12,6 +12,13 @@
       "title": "ㅅ교",
       "content": "ㅅ교",
       "isDone": true,
+      "deadline": "2024. 9. 21."
+    },
+    {
+      "id": "1e8cbcb8-ef20-4f6e-84d8-94696683816f",
+      "title": "768",
+      "content": "67",
+      "isDone": false,
       "deadline": "2024. 9. 21."
     }
   ]

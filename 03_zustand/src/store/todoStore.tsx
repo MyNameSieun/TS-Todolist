@@ -12,7 +12,10 @@ interface TodoState {
   fetchTodos: () => Promise<void>;
   addTodo: (todo: Todo) => Promise<void>;
   deleteTodo: (id: string) => Promise<void>;
-  //   editTodo: (id: number, updatedData: Partial<Todo>) => Promise<void>;
+  patchTodo: (
+    id: string,
+    updateData: Pick<Todo, "title" | "content">
+  ) => Promise<void>;
   toggleDoneTodo: (id: string, isDone: boolean) => Promise<void>;
 }
 
@@ -48,6 +51,23 @@ export const useTodoStore = create<TodoState>((set) => ({
     try {
       await todoAxios.delete(`/todos/${id}`);
       set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) }));
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  // todos 수정
+  patchTodo: async (
+    id: string,
+    updateData: Pick<Todo, "title" | "content">
+  ) => {
+    try {
+      const response = await todoAxios.patch(`/todos/${id}`, updateData);
+      set((state) => ({
+        todos: state.todos.map((todo) =>
+          todo.id === id ? response.data : todo
+        ),
+      }));
     } catch (error) {
       console.error(error);
     }
