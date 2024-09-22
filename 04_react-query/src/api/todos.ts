@@ -17,6 +17,7 @@ export const fetchTodos = async () => {
 export const addTodo = async (todo: Todo) => {
   return await todosAxios.post(`/todos`, todo);
 };
+
 // todo 삭제
 export const deleteTodo = async (id: string) => {
   return await todosAxios.delete(`/todos/${id}`);
