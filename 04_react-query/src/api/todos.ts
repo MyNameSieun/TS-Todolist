@@ -25,7 +25,8 @@ export const deleteTodo = async (id: string) => {
 
 // todo 수정
 export const updateTodo = async (id: string, todo: Todo) => {
-  return await todosAxios.patch(`/todos/${id}`, todo);
+  const response = await todosAxios.patch(`/todos/${id}`, todo);
+  return response.data;
 };
 
 // todo 토글

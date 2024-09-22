@@ -1,7 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Todo } from "../../types/todo.type";
-import { deleteTodo } from "../../api/todos";
+import { deleteTodo, updateTodo } from "../../api/todos";
 import { QUERY_KEYS } from "../hooks/query/key.constand";
+import { useState } from "react";
 
 interface TodoItemProps {
   todo: Todo;
@@ -9,6 +10,7 @@ interface TodoItemProps {
 
 const TodoItem = ({ todo }: TodoItemProps) => {
   const { id, title, content, deadline, isDone } = todo;
+  const [editTodo, setEditTodo] = useState<Todo | null>(null);
 
   const queryClient = useQueryClient();
 
@@ -25,18 +27,61 @@ const TodoItem = ({ todo }: TodoItemProps) => {
     },
   });
 
-  const handleDeletebutton = () => {
-    const deleteConfrim = window.confirm("정말 삭제하시겠습니까?");
-    if (deleteConfrim) {
+  const handleDeleteButton = () => {
+    const deleteConfirm = window.confirm("정말 삭제하시겠습니까?");
+    if (deleteConfirm) {
       deleteMutation.mutate(id);
     }
   };
+
+  // 수정
+  const editTodoMutation = useMutation({
+    mutationFn: () => updateTodo(id, editTodo as Todo),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODOS] });
+      setEditTodo(null);
+      alert("수정 완료!");
+    },
+    onError: (error) => {
+      console.error("수정 실패:", error);
+      alert("수정 실패. 다시 시도해 주세요.");
+    },
+  });
+
+  const handleEditButton = () => {
+    if (editTodo) {
+      editTodoMutation.mutate();
+    }
+  };
+
   return (
     <li>
-      <p>{title}</p>
-      <p>{content}</p>
-      <p>{deadline}</p>
-      <button onClick={handleDeletebutton}>삭제</button>
+      {editTodo ? (
+        <>
+          <input
+            value={editTodo.title}
+            onChange={(e) =>
+              setEditTodo({ ...editTodo, title: e.target.value })
+            }
+          />
+          <input
+            value={editTodo.content}
+            onChange={(e) =>
+              setEditTodo({ ...editTodo, content: e.target.value })
+            }
+          />
+          <button onClick={handleEditButton}>수정 완료</button>
+          <button onClick={() => setEditTodo(null)}>수정 취소</button>
+        </>
+      ) : (
+        <>
+          <p>{title}</p>
+          <p>{content}</p>
+          <p>{deadline}</p>
+          <button onClick={handleDeleteButton}>삭제</button>
+          <button onClick={() => setEditTodo(todo)}>수정</button>
+        </>
+      )}
     </li>
   );
 };
