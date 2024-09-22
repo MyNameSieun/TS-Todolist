@@ -1,15 +1,17 @@
 {
   "todos": [
     {
-      "id": "1",
-      "title": "json-server",
-      "content": "typicodeㄴ345"
+      "id": "55ad7b86-de67-493d-8d5d-bd9d84b4c093",
+      "title": "7",
+      "content": "7",
+      "isDone": false,
+      "deadline": "2024. 9. 22."
     },
     {
-      "id": "75d8319a-156d-4b3d-9a2a-07862f8949fb",
-      "title": "]",
-      "content": "ㅑ",
-      "isDone": false,
+      "id": "d74e920f-a87b-4b96-811a-d2bcd64dac9c",
+      "title": "=",
+      "content": "=",
+      "isDone": true,
       "deadline": "2024. 9. 22."
     }
   ]

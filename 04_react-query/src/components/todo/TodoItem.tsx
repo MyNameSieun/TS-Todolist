@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Todo } from "../../types/todo.type";
-import { deleteTodo, updateTodo } from "../../api/todos";
+import { deleteTodo, toggleDoneTodo, updateTodo } from "../../api/todos";
 import { QUERY_KEYS } from "../hooks/query/key.constand";
 import { useState } from "react";
 
@@ -54,6 +54,22 @@ const TodoItem = ({ todo }: TodoItemProps) => {
     }
   };
 
+  // 토글
+  const doneTodoToggleMutation = useMutation({
+    mutationFn: () => toggleDoneTodo(id, isDone),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TODOS] });
+    },
+    onError: (error) => {
+      console.error("변경 실패:", error);
+      alert("변경 실패. 다시 시도해 주세요.");
+    },
+  });
+
+  const handleDoneToggleButton = () => {
+    doneTodoToggleMutation.mutate();
+  };
+
   return (
     <li>
       {editTodo ? (
@@ -80,6 +96,9 @@ const TodoItem = ({ todo }: TodoItemProps) => {
           <p>{deadline}</p>
           <button onClick={handleDeleteButton}>삭제</button>
           <button onClick={() => setEditTodo(todo)}>수정</button>
+          <button onClick={handleDoneToggleButton}>
+            {isDone ? "할 일 완료" : "할 일 취소"}
+          </button>
         </>
       )}
     </li>
