@@ -1,0 +1,37 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "content": "typicode"
+    },
+    {
+      "id": "e29d1869-ee94-4601-a25e-4bf294f083c1",
+      "title": "8",
+      "content": "8",
+      "isDone": false,
+      "deadline": "2024. 9. 22."
+    },
+    {
+      "id": "b38f4169-d797-420d-a680-d684565194af",
+      "title": "7",
+      "content": "7",
+      "isDone": false,
+      "deadline": "2024. 9. 22."
+    },
+    {
+      "id": "f808ccd6-ca0c-4c23-a0c5-83e5f0dfd734",
+      "title": "ㄴ",
+      "content": "ㄴ",
+      "isDone": false,
+      "deadline": "2024-09-22T04:16:03.447Z"
+    },
+    {
+      "id": "75d8319a-156d-4b3d-9a2a-07862f8949fb",
+      "title": "]",
+      "content": "ㅑ",
+      "isDone": false,
+      "deadline": "2024. 9. 22."
+    }
+  ]
+}
