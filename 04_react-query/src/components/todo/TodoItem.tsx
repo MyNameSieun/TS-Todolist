@@ -3,6 +3,7 @@ import { Todo } from "../../types/todo.type";
 import { deleteTodo, toggleDoneTodo, updateTodo } from "../../api/todos";
 import { QUERY_KEYS } from "../hooks/query/key.constand";
 import { useState } from "react";
+import { StTodoCardItem } from "../../style/TodoStyle";
 
 interface TodoItemProps {
   todo: Todo;
@@ -71,7 +72,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
   };
 
   return (
-    <li>
+    <StTodoCardItem $isDone={!isDone}>
       {editTodo ? (
         <>
           <input
@@ -101,7 +102,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
           </button>
         </>
       )}
-    </li>
+    </StTodoCardItem>
   );
 };
 
